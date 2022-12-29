@@ -41,7 +41,8 @@ const Main = () => {
                             <Link to={`${category.movie}/${item.id}`}>Play</Link>
                         </button>
                     </Link>
-                    <button className="border text-white text-3xl px-5 py-2 border-white">
+                    <button className="border text-white text-3xl px-5 py-2 border-white hover:bg-gray-300
+                        hover:text-black transition-colors duration-500 ease-in-out">
                         Watch Later
                     </button>
                 </div>
