@@ -3,6 +3,8 @@ import {Routes, Route, Navigate, Outlet} from "react-router-dom";
 import Home from "./pages/Home";
 import Catalog from "./pages/catalog/Catalog";
 import Detail from "./pages/Detail";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 
 interface ProtectedRouteProps {
@@ -23,6 +25,8 @@ const AppRoutes = () => {
             <Route path={'/'} element={<Home/>}></Route>
             <Route path={'/:catalog'} element={<Catalog/>}></Route>
             <Route path={'/:cat/:movieId'} element={<Detail/>}></Route>
+            <Route path={'/login'} element={<Login/>}></Route>
+            <Route path={'/signup'} element={<Signup/>}></Route>
         </Routes>
     );
 };
