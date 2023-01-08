@@ -31,16 +31,16 @@ export const AuthProvider = ({children}: any) => {
         await setLoading(false)
     }
 
-    const signOut = () => {
-        fetch(`https://api.themoviedb.org/3/authentication/session?api_key=${process.env.REACT_APP_API_KEY}`, {
+    const signOut = async () => {
+        await fetch(`https://api.themoviedb.org/3/authentication/session?api_key=${process.env.REACT_APP_API_KEY}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({session_id: cookies.get('sessionId')})
         })
-        setIsAuth(false)
-        cookies.remove('sessionId')
+        await setIsAuth(false)
+        await cookies.remove('sessionId')
     }
 
     useEffect(() => {

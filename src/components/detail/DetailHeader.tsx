@@ -1,6 +1,5 @@
 import React, {memo} from 'react';
 
-
 interface DetailHeaderProps {
     imgPath: string;
 }

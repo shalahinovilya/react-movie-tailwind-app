@@ -2,7 +2,6 @@ import React from 'react';
 import MovieItem from "./MovieItem";
 import {CommonType} from "../types/CommonType";
 
-
 interface MovieGridProps {
     cat: string;
     data: CommonType[] | [];

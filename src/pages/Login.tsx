@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import NavBar from "../components/NavBar";
 import LoginForm from "../components/login/LoginForm";
 import LoginFooter from "../components/login/LoginFooter";

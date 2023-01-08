@@ -10,6 +10,7 @@ export interface MovieSimilar {
     poster_path?: any;
     popularity: number;
     title: string;
+    name: string;
     video: boolean;
     vote_average: number;
     vote_count: number;

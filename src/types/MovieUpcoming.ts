@@ -8,6 +8,7 @@ export interface MovieUpcoming {
     original_title: string;
     original_language: string;
     title: string;
+    name: string;
     backdrop_path: string;
     popularity: number;
     vote_count: number;

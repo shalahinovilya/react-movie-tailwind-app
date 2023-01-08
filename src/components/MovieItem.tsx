@@ -26,7 +26,7 @@ const MovieItem = ({cat, el}: MovieItemProps) => {
                     </div>
                 </div>
                 <p className="text-white whitespace-normal font-bold transition-colors duration-500 ease-in-out group-hover:text-red-600">
-                    {el.title}
+                    {el.title || el.name}
                 </p>
             </div>
         </Link>
