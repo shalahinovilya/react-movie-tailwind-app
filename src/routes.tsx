@@ -5,6 +5,7 @@ import Catalog from "./pages/catalog/Catalog";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import LoginApprove from "./pages/LoginApprove";
 
 
 interface ProtectedRouteProps {
@@ -27,6 +28,7 @@ const AppRoutes = () => {
             <Route path={'/:cat/:movieId'} element={<Detail/>}></Route>
             <Route path={'/login'} element={<Login/>}></Route>
             <Route path={'/signup'} element={<Signup/>}></Route>
+            <Route path={'/approved'} element={<LoginApprove/>}></Route>
         </Routes>
     );
 };

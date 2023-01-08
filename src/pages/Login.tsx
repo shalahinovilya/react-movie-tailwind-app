@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import NavBar from "../components/NavBar";
-import {Link} from "react-router-dom";
+import LoginForm from "../components/login/LoginForm";
+import LoginFooter from "../components/login/LoginFooter";
 
 const Login = () => {
     return (
@@ -16,32 +17,8 @@ const Login = () => {
                 <div className="fixed w-full my-24 z-50">
                     <div className="w-[600px] h-[800px] mx-auto px-20 py-24 bg-black/70 text-white">
                         <h1 className="text-7xl font-bold">Sign In</h1>
-                        <form className="py-4">
-                            <input
-                                className="w-full text-3xl bg-gray-700 p-4 my-5 rounded"
-                                id="username"
-                                type="text"
-                                placeholder="Username"
-                            />
-                            <input
-                                className="w-full text-3xl bg-gray-700 p-4 my-5  rounded"
-                                id="password"
-                                type="password"
-                                placeholder="Password"
-                            />
-                            <button className="w-full bg-red-700 text-3xl py-4 font-bold my-5" type="submit">Sign In</button>
-                        </form>
-                        <div className="flex justify-between items-center text-gray-500 text-2xl">
-                            <p>
-                                <input className="mr-2 w-5 h-5" type="checkbox" />
-                                Remember me
-                            </p>
-                            <Link to="#" className="hover:underline">Need help?</Link>
-                        </div>
-                        <div className="text-2xl text-gray-500 mt-4">
-                            <span>New to Netflix?</span>
-                            <Link className="ml-2 text-white" to={`/signup`}>Sign Up</Link>
-                        </div>
+                        <LoginForm/>
+                        <LoginFooter/>
                     </div>
                 </div>
             </div>

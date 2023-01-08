@@ -38,7 +38,7 @@ const Main = () => {
                 <div className="mt-7">
                     <Link to={`/${category.movie}/${item.id}`}>
                         <button className="border text-black text-3xl px-5 py-2 mr-4 mb-4 bg-gray-300">
-                            <Link to={`${category.movie}/${item.id}`}>Play</Link>
+                            Play
                         </button>
                     </Link>
                     <button className="border text-white text-3xl px-5 py-2 border-white hover:bg-gray-300
