@@ -18,7 +18,7 @@ const MovieInfo = ({data, cat, movieId}: FilmInfoProps) => {
                     alt={data.release_date}/>
             </div>
             <div className="flex flex-col ml-5 basis-2/3 gap-y-12">
-                <p className="text-white text-7xl font-bold self-start">{data.original_title}</p>
+                <p className="text-white text-7xl font-bold self-start">{data.original_title || data.original_name}</p>
                 <p className="text-white text-2xl w-[60%] md:w-[70%] xl:w-full">
                     {data.overview}
                 </p>

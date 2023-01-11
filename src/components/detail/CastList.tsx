@@ -18,7 +18,7 @@ const CastList = ({cat, movieId}: CastListProps) => {
     return (
         <div className="grid grid-cols-casts gap-x-8 gap-y-7">
             {
-                data.crew.slice(0, 5).map((el: Cast, index: number) => (
+                data.cast.slice(0, 5).map((el: Cast, index: number) => (
                     <div key={index} className="w-max-[130px]">
                         <div className="w-full h-[200px]">
                             <img

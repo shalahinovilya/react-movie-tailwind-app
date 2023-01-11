@@ -15,7 +15,7 @@ const MovieItem = ({cat, el}: MovieItemProps) => {
                 <div className="relative h-[350px] w-full">
                     <img
                         src={`https://image.tmdb.org/t/p/w500/${el.backdrop_path || el.poster_path}`}
-                        alt={el.title}
+                        alt={el.title || el.name}
                         className="h-full w-full object-cover rounded-lg"/>
                     <div className="w-full h-full top-0 left-0 flex items-center
                 justify-center absolute bg-black opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-80">

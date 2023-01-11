@@ -31,12 +31,14 @@ const MovieList = ({id, cat, type, title, queryHook}: MovieListProps) => {
         </div>
     )
 
-    if (isError || !data) return (
+    if (isError) return (
         <div className="flex w-full h-[200px] items-center justify-center">
             <p className="text-white text-3xl">Something went wrong with <span
                 className="font-bold text-4xl">{title}</span></p>
         </div>
     );
+
+    if (!data.results.length) return (<></>)
 
     const sliderLeft = () => {
         if (sliderRef.current) sliderRef.current.scrollLeft += 250

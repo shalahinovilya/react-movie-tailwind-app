@@ -21,6 +21,8 @@ const Detail = () => {
 
     if (!data || isError) return (<Error/>)
 
+    if (!data.overview && !data.original_title && !data.original_name) return (<></>);
+
     return (
         <>
             <NavBar/>
