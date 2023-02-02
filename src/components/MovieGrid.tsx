@@ -17,7 +17,7 @@ const MovieGrid = ({data, cat}: MovieGridProps) => {
             <hr className="absolute top-0 left-0 w-full opacity-0 z-50"/>
             <div className="w-[95%] grid grid-cols-movies gap-x-1 gap-y-2">
                 {data.map((el: CommonType) => (
-                    <MovieItem key={createUUID()} cat={cat} el={el}/>
+                    <MovieItem key={createUUID()} cat={cat} el={el} addToList={true}/>
                 ))}
             </div>
         </div>

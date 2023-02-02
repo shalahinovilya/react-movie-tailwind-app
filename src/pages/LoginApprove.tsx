@@ -28,7 +28,6 @@ const LoginApprove = () => {
                 }).then(data => data.json())
 
                 if (sessionData.success) {
-
                     const cookie = new Cookies()
                     const expires = new Date()
                     expires.setDate(expires.getDate() + 1)
