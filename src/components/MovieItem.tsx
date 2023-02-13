@@ -37,7 +37,7 @@ const MovieItem = ({cat, el, addToList}: MovieItemProps) => {
     }
 
     return (
-        <Link className="mx-auto" to={`/${cat}/${el.id}/`}>
+        <Link className="" to={`/${cat}/${el.id}/`}>
             <div className="inline-block w-[250px] cursor-pointer align-top group">
                 <div className="relative h-[350px] w-full">
                     <button onClick={markAsFavoriteMovieHandler} className={`absolute z-50 left-0 top-0 text-white text-4xl mt-1 ml-1
