@@ -4,6 +4,7 @@ import MovieSlider from "../common/MovieSlider";
 import {CommonType} from "../../types/CommonType";
 import MovieItem from "../MovieItem";
 import Loader from "../Loader";
+import {useMovieToast} from "../../contexts/MovieToastContext";
 
 interface FavoriteMovieListProps {
     cat: string;
@@ -14,6 +15,7 @@ interface FavoriteMovieListProps {
 const FavoriteMovieList = ({cat, type, title} : FavoriteMovieListProps) => {
 
     const {data, isLoading, isError} = useGetFavoriteMoviesQuery({cat, type})
+    const {visible, showToastHandler} = useMovieToast()
 
     if (isLoading) return (
         <div className="my-20">
@@ -34,7 +36,14 @@ const FavoriteMovieList = ({cat, type, title} : FavoriteMovieListProps) => {
         <MovieSlider title={title} cat={cat} type={cat} itemsCount={data.results.length}>
             {data &&
                 data.results.map((el: CommonType) => (
-                    <MovieItem key={el.id} cat={cat} el={el} addToList={false}/>
+                    <MovieItem
+                        showToastHandler={showToastHandler}
+                        isToastVisible={visible}
+                        key={el.id}
+                        cat={cat}
+                        el={el}
+                        addToList={false}
+                    />
                 ))
             }
         </MovieSlider>

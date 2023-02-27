@@ -10,13 +10,18 @@ interface MovieItemProps {
     cat: string;
     el: CommonType;
     addToList: boolean;
+    showToastHandler: (content: string) => void;
+    isToastVisible?: boolean
 }
 
 
-const MovieItem = ({cat, el, addToList}: MovieItemProps) => {
+const MovieItem = ({cat, el, addToList, showToastHandler, isToastVisible = false}: MovieItemProps) => {
 
     const [markMovie, {}] = useMarkAsFavoriteMutation()
     const [addToWatchlist, {}] = useAddToWatchlistMutation()
+
+    const favouriteContent = 'You have successfully marked this movie as your favorite ✅'
+    const watchlistContent = 'You have successfully added this movie to your Watchlist ✅'
 
     const markAsFavoriteMovieHandler = async (e : React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
@@ -25,6 +30,8 @@ const MovieItem = ({cat, el, addToList}: MovieItemProps) => {
             media_id: el.id,
             favorite: addToList
         })
+        if (isToastVisible) return;
+        showToastHandler(favouriteContent)
     }
 
     const addToWatchlistHandler = async (e : React.MouseEvent<HTMLButtonElement>) => {
@@ -34,6 +41,8 @@ const MovieItem = ({cat, el, addToList}: MovieItemProps) => {
             media_id: el.id,
             watchlist: addToList
         })
+        if (isToastVisible) return;
+        showToastHandler(watchlistContent)
     }
 
     return (

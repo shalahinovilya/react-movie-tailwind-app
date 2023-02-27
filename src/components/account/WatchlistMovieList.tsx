@@ -4,6 +4,7 @@ import MovieSlider from "../common/MovieSlider";
 import {CommonType} from "../../types/CommonType";
 import MovieItem from "../MovieItem";
 import Loader from "../Loader";
+import {useMovieToast} from "../../contexts/MovieToastContext";
 
 interface WatchlistMovieListProps {
     cat: string;
@@ -14,6 +15,7 @@ interface WatchlistMovieListProps {
 const WatchlistMovieList = ({cat, type, title} : WatchlistMovieListProps) => {
 
     const {data, isLoading, isError} = useGetWatchlistMoviesQuery({cat, type})
+    const {visible, showToastHandler} = useMovieToast()
 
     if (isLoading) return (
         <div className="my-20">
@@ -34,7 +36,14 @@ const WatchlistMovieList = ({cat, type, title} : WatchlistMovieListProps) => {
         <MovieSlider title={title} cat={cat} type={cat} itemsCount={data.results.length}>
             {data &&
                 data.results.map((el: CommonType) => (
-                    <MovieItem key={el.id} cat={cat} el={el} addToList={false}/>
+                    <MovieItem
+                        showToastHandler={showToastHandler}
+                        isToastVisible={visible}
+                        key={el.id}
+                        cat={cat}
+                        el={el}
+                        addToList={false}
+                    />
                 ))
             }
         </MovieSlider>

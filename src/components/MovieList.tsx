@@ -1,12 +1,11 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {UseQuery} from "@reduxjs/toolkit/dist/query/react/buildHooks";
 import {BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, QueryDefinition} from "@reduxjs/toolkit/query";
-import {FaChevronLeft, FaChevronRight} from 'react-icons/fa'
 import MovieItem from "./MovieItem";
 import {CommonType} from "../types/CommonType";
 import Loader from "./Loader";
-import {Link} from "react-router-dom";
 import MovieSlider from "./common/MovieSlider";
+import {useMovieToast} from "../contexts/MovieToastContext";
 
 interface MovieListProps {
     id: number;
@@ -24,6 +23,8 @@ const MovieList = ({id, cat, type, title, queryHook}: MovieListProps) => {
         type
     })
 
+    const {visible, showToastHandler} = useMovieToast()
+
     if (isLoading) return (
         <div className="my-20">
             <Loader/>
@@ -40,13 +41,22 @@ const MovieList = ({id, cat, type, title, queryHook}: MovieListProps) => {
     if (!data.results.length) return (<></>)
 
     return (
-        <MovieSlider title={title} cat={cat} type={type} itemsCount={data.results.length}>
-            {data &&
-                data.results.map((el: CommonType) => (
-                    <MovieItem key={el.id} cat={cat} el={el} addToList={true}/>
-                ))
-            }
-        </MovieSlider>
+        <>
+            <MovieSlider title={title} cat={cat} type={type} itemsCount={data.results.length}>
+                {data &&
+                    data.results.map((el: CommonType) => (
+                        <MovieItem
+                            showToastHandler={showToastHandler}
+                            isToastVisible={visible}
+                            key={el.id}
+                            cat={cat}
+                            el={el}
+                            addToList={true}
+                        />
+                    ))
+                }
+            </MovieSlider>
+        </>
     );
 };
 
