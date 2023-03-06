@@ -8,6 +8,7 @@ import LoadingFull from "../../components/LoadingFull";
 import Error from "../../components/detail/Error";
 import Footer from "../../components/Footer";
 import useGetPagesData from "./useGetPagesData";
+import Layout from "../../components/common/Layout";
 
 const Catalog = () => {
 
@@ -26,8 +27,7 @@ const Catalog = () => {
     if (isErrorCurrent) return (<Error/>)
 
     return (
-        <div>
-            <NavBar/>
+        <Layout>
             <CatalogHeader title={catalog === category.movie ? 'Movies' : 'TV Series'}/>
             <MovieGrid cat={catalog || 'Movies'} data={data}/>
             <div className="text-center">
@@ -38,8 +38,7 @@ const Catalog = () => {
                     Load more
                 </button>
             </div>
-            <Footer/>
-        </div>
+        </Layout>
     );
 };
 

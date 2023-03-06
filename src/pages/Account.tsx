@@ -4,6 +4,7 @@ import {accountMovieCategory, accountMovieType, useGetAccountQuery} from "../sto
 import AccountInfo from "../components/account/AccountInfo";
 import FavoriteMovieList from "../components/account/FavoriteMovieList";
 import WatchlistMovieList from "../components/account/WatchlistMovieList";
+import Layout from "../components/common/Layout";
 
 
 const Account = () => {
@@ -11,12 +12,12 @@ const Account = () => {
     const {data = [], isLoading, isError} = useGetAccountQuery({})
 
     return (
-        <div>
+        <Layout>
             <AccountHeader/>
             <AccountInfo accountInfo={data}/>
             <FavoriteMovieList cat={accountMovieCategory.movies} type={accountMovieType.favorite} title={accountMovieType.favorite}/>
             <WatchlistMovieList cat={accountMovieCategory.movies} type={accountMovieType.watchlist} title={accountMovieType.watchlist}/>
-        </div>
+        </Layout>
     );
 };
 

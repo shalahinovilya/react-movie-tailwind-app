@@ -1,11 +1,11 @@
 import React from 'react';
 import NavBar from "../components/NavBar";
 import {Link} from "react-router-dom";
+import Layout from "../components/common/Layout";
 
 const Signup = () => {
     return (
-        <>
-            <NavBar/>
+        <Layout>
             <div className="w-full h-screen">
                 <img
                     className="absolute h-full w-full object-cover"
@@ -45,7 +45,7 @@ const Signup = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </Layout>
     );
 };
 

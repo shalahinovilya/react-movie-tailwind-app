@@ -5,12 +5,12 @@ import NavBar from "../components/NavBar";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
 import CategorySelect from "../components/CategorySelect";
+import Layout from "../components/common/Layout";
 
 
 const Home = () => {
     return (
-        <>
-            <NavBar/>
+        <Layout>
             <Main/>
             <CategorySelect/>
             <MovieList
@@ -30,8 +30,7 @@ const Home = () => {
                 cat={category.movie}
                 type={'upcoming'} title={'Upcoming'}
                 queryHook={useGetMovieListQuery}/>
-            <Footer/>
-        </>
+        </Layout>
     );
 };
 

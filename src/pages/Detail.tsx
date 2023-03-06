@@ -9,6 +9,7 @@ import MovieList from "../components/MovieList";
 import MovieInfo from "../components/detail/MovieInfo";
 import Error from "../components/detail/Error";
 import LoadingFull from "../components/LoadingFull";
+import Layout from "../components/common/Layout";
 
 
 const Detail = () => {
@@ -24,14 +25,12 @@ const Detail = () => {
     if (!data.overview && !data.original_title && !data.original_name) return (<></>);
 
     return (
-        <>
-            <NavBar/>
+        <Layout>
             <DetailHeader imgPath={data.backdrop_path || data.poster_path}/>
             <MovieInfo data={data} cat={cat} movieId={+movieId}/>
             <VideoList cat={cat} id={+movieId}/>
             <MovieList id={+movieId} cat={cat} type={'similar'} title={'Similar'} queryHook={useGetSimilarQuery}/>
-            <Footer/>
-        </>
+        </Layout>
     );
 };
 
