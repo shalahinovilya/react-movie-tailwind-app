@@ -5,6 +5,7 @@ import {CommonType} from "../../types/CommonType";
 import MovieItem from "../MovieItem";
 import Loader from "../Loader";
 import {useMovieToast} from "../../contexts/MovieToastContext";
+import Cookies from "universal-cookie";
 
 interface FavoriteMovieListProps {
     cat: string;
@@ -14,7 +15,10 @@ interface FavoriteMovieListProps {
 
 const FavoriteMovieList = ({cat, type, title} : FavoriteMovieListProps) => {
 
-    const {data, isLoading, isError} = useGetFavoriteMoviesQuery({cat, type})
+    const cookies = new Cookies()
+    const sessionId = cookies.get('sessionId')
+
+    const {data, isLoading, isError} = useGetFavoriteMoviesQuery({cat, type, sessionId})
     const {visible, showToastHandler} = useMovieToast()
 
     if (isLoading) return (

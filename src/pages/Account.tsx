@@ -5,11 +5,15 @@ import AccountInfo from "../components/account/AccountInfo";
 import FavoriteMovieList from "../components/account/FavoriteMovieList";
 import WatchlistMovieList from "../components/account/WatchlistMovieList";
 import Layout from "../components/common/Layout";
+import Cookies from "universal-cookie";
 
 
 const Account = () => {
 
-    const {data = [], isLoading, isError} = useGetAccountQuery({})
+    const cookies = new Cookies()
+    const sessionId = cookies.get('sessionId')
+
+    const {data = [], isLoading, isError} = useGetAccountQuery(sessionId)
 
     return (
         <Layout>

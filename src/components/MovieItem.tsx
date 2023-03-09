@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {CommonType} from "../types/CommonType";
 import {BsBookmarkPlus, BsBookmarkDash, BsPlus, BsDash} from 'react-icons/bs'
 import {useMarkAsFavoriteMutation, useAddToWatchlistMutation, category} from "../store/services/watchTvService";
+import Cookies from "universal-cookie";
 
 
 interface MovieItemProps {
@@ -17,8 +18,11 @@ interface MovieItemProps {
 
 const MovieItem = ({cat, el, addToList, showToastHandler, isToastVisible = false}: MovieItemProps) => {
 
-    const [markMovie, {}] = useMarkAsFavoriteMutation()
-    const [addToWatchlist, {}] = useAddToWatchlistMutation()
+    const cookies = new Cookies()
+    const sessionId = cookies.get('sessionId')
+
+    const [markMovie, {}] = useMarkAsFavoriteMutation(sessionId)
+    const [addToWatchlist, {}] = useAddToWatchlistMutation(sessionId)
 
     const favouriteContent = 'You have successfully marked this movie as your favorite ✅'
     const watchlistContent = 'You have successfully added this movie to your Watchlist ✅'
@@ -26,9 +30,12 @@ const MovieItem = ({cat, el, addToList, showToastHandler, isToastVisible = false
     const markAsFavoriteMovieHandler = async (e : React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         await markMovie({
-            media_type: category[cat],
-            media_id: el.id,
-            favorite: addToList
+            body: {
+                media_type: category[cat],
+                media_id: el.id,
+                favorite: addToList
+            },
+            sessionId
         })
         if (isToastVisible) return;
         showToastHandler(favouriteContent)
@@ -37,9 +44,12 @@ const MovieItem = ({cat, el, addToList, showToastHandler, isToastVisible = false
     const addToWatchlistHandler = async (e : React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         await addToWatchlist({
+            body: {
             media_type: category[cat],
             media_id: el.id,
             watchlist: addToList
+            },
+            sessionId,
         })
         if (isToastVisible) return;
         showToastHandler(watchlistContent)

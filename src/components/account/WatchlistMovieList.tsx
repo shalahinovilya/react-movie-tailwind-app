@@ -5,6 +5,7 @@ import {CommonType} from "../../types/CommonType";
 import MovieItem from "../MovieItem";
 import Loader from "../Loader";
 import {useMovieToast} from "../../contexts/MovieToastContext";
+import Cookies from "universal-cookie";
 
 interface WatchlistMovieListProps {
     cat: string;
@@ -14,7 +15,10 @@ interface WatchlistMovieListProps {
 
 const WatchlistMovieList = ({cat, type, title} : WatchlistMovieListProps) => {
 
-    const {data, isLoading, isError} = useGetWatchlistMoviesQuery({cat, type})
+    const cookies = new Cookies()
+    const sessionId = cookies.get('sessionId')
+
+    const {data, isLoading, isError} = useGetWatchlistMoviesQuery({cat, type, sessionId})
     const {visible, showToastHandler} = useMovieToast()
 
     if (isLoading) return (
