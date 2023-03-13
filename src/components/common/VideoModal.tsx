@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {IoMdClose} from "react-icons/io";
 import ReactPlayer from "react-player";
 
@@ -10,13 +10,17 @@ interface VideoModalProps {
 
 const VideoModal = ({isVideoOpen, videoUrl, toggleVideoModal} : VideoModalProps) => {
 
-    const [shouldPauseVideo, setShouldPauseVideo] = useState(false);
+    const [shouldPauseVideo, setShouldPauseVideo] = useState(true);
+
+    useEffect(() => {
+        setShouldPauseVideo(!isVideoOpen)
+    }, [isVideoOpen])
 
     return (
         <div
             className={`${isVideoOpen ? 'flex' : 'hidden'} 
-                        ${isVideoOpen ? 'opacity-100' : 'opacity-0'} 
-                        flex justify-center fixed h-screen w-screen z-[1000] top-0 bg-black/90`}
+                        ${isVideoOpen ? 'opacity-100 z-[1000]' : 'opacity-0 z-[-20]'} 
+                        flex justify-center fixed h-screen w-screen top-0 bg-black/90`}
             onClick={() => {
                 toggleVideoModal()
                 setShouldPauseVideo(true)
