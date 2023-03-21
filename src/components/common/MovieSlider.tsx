@@ -15,11 +15,11 @@ const MovieSlider = ({children, title, cat, type, itemsCount} : SliderProps) => 
     const sliderRef = useRef<HTMLDivElement | null>(null)
 
     const sliderLeft = () => {
-        if (sliderRef.current) sliderRef.current.scrollLeft += 250
+        if (sliderRef.current) sliderRef.current.scrollLeft -= 250
     }
 
     const sliderRight = () => {
-        if (sliderRef.current) sliderRef.current.scrollLeft -= 250
+        if (sliderRef.current) sliderRef.current.scrollLeft += 250
     }
 
     return (
@@ -38,7 +38,7 @@ const MovieSlider = ({children, title, cat, type, itemsCount} : SliderProps) => 
             <div className="relative flex items-center group/list">
                 <FaChevronLeft
                     size={40}
-                    onClick={sliderRight}
+                    onClick={sliderLeft}
                     className="hidden bg-white rounded-full p-2 opacity-50 z-10 hover:opacity-100 absolute cursor-pointer group-hover/list:block"/>
                 <div
                     id="slider"
@@ -50,7 +50,7 @@ const MovieSlider = ({children, title, cat, type, itemsCount} : SliderProps) => 
                 </div>
                 <FaChevronRight
                     size={40}
-                    onClick={sliderLeft}
+                    onClick={sliderRight}
                     className="hidden bg-white rounded-full p-2 opacity-50 z-10 hover:opacity-100 absolute right-0 cursor-pointer group-hover/list:block"/>
             </div>
         </div>
